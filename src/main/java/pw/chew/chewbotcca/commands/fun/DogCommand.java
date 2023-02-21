@@ -38,6 +38,12 @@ public class DogCommand extends SlashCommand {
     protected void execute(SlashCommandEvent event) {
         // Get a dog and bark it, i mean send it, am not furry i swear
         String dog = new JSONObject(RestClient.get("https://random.dog/woof.json")).getString("url");
+        
+        String ext = showdog.split("\\.")[2];
+            while (ext.equals("mp4")) {
+                showdog = new JSONObject(RestClient.get("https://random.dog/woof.json")).getString("url");
+                ext = showdog.split("\\.")[2];
+            }
 
         event.replyEmbeds(new EmbedBuilder()
             .setTitle("Adorable.", dog)
@@ -50,6 +56,12 @@ public class DogCommand extends SlashCommand {
     protected void execute(CommandEvent commandEvent) {
         // Get a dog and woof it, i mean send it, am not furry i swear
         String dog = new JSONObject(RestClient.get("https://random.dog/woof.json")).getString("url");
+        
+        String ext = showdog.split("\\.")[2];
+            while (ext.equals("mp4")) {
+                showdog = new JSONObject(RestClient.get("https://random.dog/woof.json")).getString("url");
+                ext = showdog.split("\\.")[2];
+            }
 
         commandEvent.reply(new EmbedBuilder()
             .setTitle("Adorable.", dog)
